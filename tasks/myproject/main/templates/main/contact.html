@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Обратная связь{% endblock %}
+
+{% block content %}
+<h2>Свяжитесь с нами для правки информации о клубе</h2>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li class="message {{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+</form>
+{% endblock %}
